@@ -240,7 +240,21 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  let moviesReleasedAtOrBeforeYear = [];
+
+  if (!movies.length) {
+    return moviesReleasedAtOrBeforeYear;
+  } // Validates for empty movies array
+
+  for (let movie of movies) {
+    if (parseInt(movie.released.split(" ")[2]) <= year) {
+      moviesReleasedAtOrBeforeYear.push(movie);
+    }
+  } // Loops through movies array and formats dates in order for them to be compared then pushes the movie objects that have been releasaed before or on the given date parameter onto the output array
+
+  return moviesReleasedAtOrBeforeYear;
+}
 
 /**
  * getBiggestBoxOfficeMovie()
