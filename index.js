@@ -253,8 +253,37 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie(movies) {}
+function getBiggestBoxOfficeMovie(movies) {
+  if (!movies.length) {
+    return null;
+  }
 
+  let biggestBoxOfficeMovie = movies[0];
+
+  function formatBoxOfficeAmounts(str) {
+    let formattedAmmount = str.substring(1).replace(",", "").replace(",", "");
+    return formattedAmmount;
+  }
+
+  for (let i = 1; i < movies.length; ++i) {
+    if (
+      parseInt(
+        biggestBoxOfficeMovie.boxOffice
+          .substring(1)
+          .replace(",", "")
+          .replace(",", "")
+      ) <
+      parseInt(
+        movies[i].boxOffice.substring(1).replace(",", "").replace(",", "")
+      )
+    ) {
+      biggestBoxOfficeMovie = movies[i];
+    }
+  }
+  return biggestBoxOfficeMovie.title;
+}
+
+getBiggestBoxOfficeMovie(exampleMovies);
 // Do not change anything below this line.
 module.exports = {
   getAllMovieTitles,
