@@ -53,7 +53,24 @@ function getAllMovieTitles(movies) {
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore(movies) {}
+function getHighestMetascore(movies) {
+  let highestMetascore = 0;
+
+  if (!movies.length) {
+    return highestMetascore;
+  } // Validator for empty movies array
+
+  highestMetascore = parseInt(movies[0].ratings[2].value);
+  for (let i = 1; i < movies.length; ++i) {
+    if (highestMetascore < parseInt(movies[i].ratings[2].value)) {
+      highestMetascore = parseInt(movies[i].ratings[2].value);
+    }
+  }
+  // Loops through each movie of movies array and converts the value for the Metascore to a number that can be compared with the other ratings
+  // Saves the highest encountered rating as highestMetascore and then returns that value when the loop is complete
+
+  return highestMetascore;
+}
 
 /**
  * getAverageIMDBRating()
