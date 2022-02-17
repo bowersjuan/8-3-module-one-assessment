@@ -256,14 +256,9 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
 function getBiggestBoxOfficeMovie(movies) {
   if (!movies.length) {
     return null;
-  }
+  } // Validates for empty movies array
 
   let biggestBoxOfficeMovie = movies[0];
-
-  function formatBoxOfficeAmounts(str) {
-    let formattedAmmount = str.substring(1).replace(",", "").replace(",", "");
-    return formattedAmmount;
-  }
 
   for (let i = 1; i < movies.length; ++i) {
     if (
