@@ -124,7 +124,27 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating(movies) {}
+function countByRating(movies) {
+  let ratingsFrequency = {};
+
+  if (!movies.length) {
+    return ratingsFrequency;
+  } // Validator for empty movies array
+
+  for (let movie of movies) {
+    ratingsFrequency[movie.rated] = 0;
+  } // Creates the output object with all possible ratings as keys before taking into account each frequency
+
+  for (let movie of movies) {
+    for (rating in ratingsFrequency) {
+      if (movie.rated === rating) {
+        ratingsFrequency[rating] += 1;
+      }
+    }
+  } // Loops through movies array and compares the frequency of each possible rating, if it exists then it adds one to respective ratingsFrequency key for each time it is encounters in the movies array
+
+  return ratingsFrequency;
+}
 /**
  * findById()
  * -----------------------------
